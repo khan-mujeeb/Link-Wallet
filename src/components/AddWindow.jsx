@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const AddWindow = ({setCombinedState}) => {
+const AddWindow = ({setCombinedState, setActive}) => {
 
     const {
         setProtfolioList,
@@ -40,24 +40,23 @@ const AddWindow = ({setCombinedState}) => {
         setUrl("");
         setType("");
 
-        
+        setActive(false)
     };
 
     return (
-        <div className="flex  bg-slate-500 p-2 w-96">
+        <div className="flex rounded-lg bg-slate-500 p-2">
             <form action="" className="flex  flex-col gap-1 w-full">
 
 
-                <div className="flex flex-row justify-between w-full">
-                <input
+                <div className="flex flex-row gap-2 w-full">
+                <input className="rounded-md p-1 flex-auto"
                     type="text"
                     placeholder="name"
-                    className="w-28"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
 
-                <select
+                <select className="rounded-md p-2 flex-auto"
                     name="type"
                     value={cat}
                     onChange={(e) => setType(e.target.value)}
@@ -73,24 +72,26 @@ const AddWindow = ({setCombinedState}) => {
 
                 
 
-                <div className="flex justify-between">
+                <div className="flex gap-2">
                 <input
                     type="text"
                     placeholder="url"
-                    className=" w-86"
+                    className=" w-86 rounded-md p-2 flex-auto"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                 />
 
                 
+                
+                </div>
+
                 <button
                     type="button"
-                    className="bg-green-200 rounded-sm p-1 w-20"
+                    className="bg-green-400 rounded-md p-1 w-full"
                     onClick={handleButtonClick}
                 >
                     Create
                 </button>
-                </div>
                 
             </form>
         </div>

@@ -56,7 +56,7 @@ const ListItem = ({ combinedState, setCombinedState }) => {
 
     return (
         <div className="flex gap-2 items-center w-[400px
-        ] bg-blue-50">
+        ] bg-blue-50 rounded-lg" >
             <div className="flex flex-col w-full p-3">
                 <div className="flex">
                     

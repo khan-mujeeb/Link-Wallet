@@ -11,7 +11,7 @@ const AddButton = ({setActive}) => {
 
     return (
         <div>
-            <div onClick={onClickHandler} className="flex justify-center items-center bg-slate-700 w-96 p-1 rounded-md">
+            <div onClick={onClickHandler} className="flex justify-center items-center bg-slate-700 w-full p-1 rounded-md">
                 <img className="w-8 h-8" src={plus} />
             </div>
         </div>

@@ -14,13 +14,12 @@ function App() {
 
     const commbinedState = {socialList, protfolioList, blogList, otherList, codingProfileList}
     const setCombinedState = {setSocialList, setProtfolioList, setBlogList, setOtherList, setCodingProfileList}
-    console.log(addWindowBtn);
     return (
-        <div className="flex w-[500px] gap-2 flex-col">
-            
+        <div className="flex w-[500px] gap-2 flex-col h-min p-1">
+            <h1 className=" font-bold text-xl text-center rounded-lg p-2 bg-slate-700 text-slate-50">Links Wallet</h1>
             <ListItem combinedState={commbinedState} setCombinedState={setCombinedState}/>
-            {addWindowBtn? <AddWindow setCombinedState={setCombinedState}/> : null}
-            <AddButton setActive={setAddWindowBtn}/>
+            {addWindowBtn? <AddWindow setCombinedState={setCombinedState} setActive={setAddWindowBtn}/> : null}
+            {!addWindowBtn? <AddButton setActive={setAddWindowBtn}/>: null}
 
         </div>
     );
