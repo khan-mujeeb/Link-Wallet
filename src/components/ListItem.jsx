@@ -55,25 +55,27 @@ const ListItem = ({ combinedState, setCombinedState }) => {
     }, []);
 
     return (
-        <div className="flex gap-2 items-center w-96 bg-blue-50">
+        <div className="flex gap-2 items-center w-[400px
+        ] bg-blue-50">
             <div className="flex flex-col w-full p-3">
                 <div className="flex">
+                    
                     {/* social */}
-                    <List list={socialList} title="Social" />
+                    <List list={socialList} setCombinedState={setCombinedState} title="Social" />
 
                     {/* social */}
-                    <List list={codingProfileList} title="Coding Profile" />
+                    <List list={codingProfileList} setCombinedState={setCombinedState} title="Coding Profile" />
                 </div>
                 <div className="flex">
                     {/* social */}
-                    <List list={blogList} title="Blog" />
+                    <List list={blogList} setCombinedState={setCombinedState} title="Blog" />
 
                     {/* social */}
-                    <List list={protfolioList} title="Protfolio" />
+                    <List list={protfolioList} setCombinedState={setCombinedState} title="Protfolio" />
                 </div>
                 <div className="flex">
                     {/* social */}
-                    <List list={otherList} title="Other" />
+                    <List list={otherList} setCombinedState={setCombinedState} title="Other" />
                 </div>
             </div>
         </div>

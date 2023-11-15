@@ -16,7 +16,7 @@ function App() {
     const setCombinedState = {setSocialList, setProtfolioList, setBlogList, setOtherList, setCodingProfileList}
     console.log(addWindowBtn);
     return (
-        <div className="flex w-96 gap-2 flex-col">
+        <div className="flex w-[500px] gap-2 flex-col">
             
             <ListItem combinedState={commbinedState} setCombinedState={setCombinedState}/>
             {addWindowBtn? <AddWindow setCombinedState={setCombinedState}/> : null}
