@@ -14,16 +14,16 @@ const List = ({ list, title, setCombinedState  }) => {
 
     return (
         <div className="flex flex-col w-full p-3">
-            <h1 className="p-1 pl-2 bg-orange-200">{title}</h1>
+            <h1 className="p-1 pl-2 bg-orange-200 font-semibold text-lg">{title}</h1>
 
             {list.map((user, index) => (
                 <div className="flex flex-col gap-1" key={index}>
                     <div className="flex justify-between items-center mt-1">
-                        <h2>{user.name}</h2>
+                        <h2 className=" font-semibold text-[16px]">{user.name}</h2>
 
                         <div className="flex gap-1">
                             <button
-                                className="bg-green-500 p-1 rounded-md"
+                                className="bg-green-500 text-[16px] p-2 font-semibold text-slate-900 rounded-md"
                                 onClick={() => {
                                     navigator.clipboard.writeText(user.url);
                                     setCopy("copied");
@@ -32,7 +32,7 @@ const List = ({ list, title, setCombinedState  }) => {
                                 {copy}
                             </button>
                             <button
-                                className="bg-red-500 p-1 rounded-md"
+                                className="bg-red-500 p-1 rounded-md [16px] font-semibold text-slate-900"
                                 onClick={() => {
                                     const socialData =
                                         JSON.parse(
