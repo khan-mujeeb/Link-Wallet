@@ -6,12 +6,20 @@ import AddButton from "./components/AddButton";
 import AddWindow from "./components/AddWindow";
 function App() {
     const [addWindowBtn, setAddWindowBtn] = React.useState(false);
+    const [protfolioList, setProtfolioList] = React.useState([]);
+    const [blogList, setBlogList] = React.useState([]);
+    const [otherList, setOtherList] = React.useState([]);
+    const [socialList, setSocialList] = React.useState([]);
+    const [codingProfileList, setCodingProfileList] = React.useState([]);
+
+    const commbinedState = {socialList, protfolioList, blogList, otherList, codingProfileList}
+    const setCombinedState = {setSocialList, setProtfolioList, setBlogList, setOtherList, setCodingProfileList}
     console.log(addWindowBtn);
     return (
-        <div className="flex items-center gap-2 flex-col">
+        <div className="flex w-96 gap-2 flex-col">
             
-            <ListItem />
-            {addWindowBtn? <AddWindow /> : null}
+            <ListItem combinedState={commbinedState} setCombinedState={setCombinedState}/>
+            {addWindowBtn? <AddWindow setCombinedState={setCombinedState}/> : null}
             <AddButton setActive={setAddWindowBtn}/>
 
         </div>

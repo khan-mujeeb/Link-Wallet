@@ -1,0 +1,15 @@
+{
+    "name": "Link wallet",
+    "version": "1.0.0",
+    "description": "store your wallet links",
+    "manifest_version": 3,
+    "author": "Mujeeb Khan",
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ],
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Link wallet"
+    }
+}

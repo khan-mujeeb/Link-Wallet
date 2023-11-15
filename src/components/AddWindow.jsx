@@ -2,7 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const AddWindow = () => {
+const AddWindow = ({setCombinedState}) => {
+
+    const {
+        setProtfolioList,
+        setSocialList,
+        setBlogList,
+        setOtherList,
+        setCodingProfileList,
+    } = setCombinedState;
     const [name, setName] = React.useState("");
     const [url, setUrl] = React.useState("");
     const [cat, setType] = React.useState("");
@@ -13,6 +21,19 @@ const AddWindow = () => {
         const updatedLinks = [...existingLinks, link];
 
         localStorage.setItem(cat, JSON.stringify(updatedLinks));
+
+        // updating the state 
+        if (cat === "social") {
+            setSocialList(updatedLinks);
+        } else if (cat === "portfolio") {
+            setProtfolioList(updatedLinks);
+        } else if (cat === "blog") {
+            setBlogList(updatedLinks);
+        } else if (cat === "other") {
+            setOtherList(updatedLinks);
+        } else if (cat === "coding_profile") {
+            setCodingProfileList(updatedLinks);
+        }
 
         // clear the form fields after saving
         setName("");
@@ -80,6 +101,7 @@ const AddWindow = () => {
 
 AddWindow.propTypes = {
     setActive: PropTypes.func.isRequired,
+    setCombinedState: PropTypes.object.isRequired,
 }
 
 export default AddWindow;

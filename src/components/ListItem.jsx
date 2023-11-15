@@ -1,14 +1,24 @@
 import { useEffect } from "react";
 import Link from "../data/Links.js";
-import React from "react";
 import List from "../components/List.jsx";
+import PropTypes from "prop-types";
 
-const ListItem = () => {
-    const [protfolioList, setProtfolioList] = React.useState([]);
-    const [blogList, setBlogList] = React.useState([]);
-    const [otherList, setOtherList] = React.useState([]);
-    const [socialList, setSocialList] = React.useState([]);
-    const [codingProfileList, setCodingProfileList] = React.useState([]);
+const ListItem = ({ combinedState, setCombinedState }) => {
+    const {
+        setProtfolioList,
+        setSocialList,
+        setBlogList,
+        setOtherList,
+        setCodingProfileList,
+    } = setCombinedState;
+
+    const {
+        socialList,
+        protfolioList,
+        blogList,
+        otherList,
+        codingProfileList,
+    } = combinedState;
 
     const updateListsFromLocalStorage = () => {
         const portfolioData = localStorage.getItem("portfolio");
@@ -17,23 +27,31 @@ const ListItem = () => {
         const otherData = localStorage.getItem("other");
         const cpData = localStorage.getItem("coding_profile");
 
-        const portfolioInstances = portfolioData ? JSON.parse(portfolioData).map(Link.fromObject) : [];
-        const socialInstances = socialData ? JSON.parse(socialData).map(Link.fromObject) : [];
-        const blogInstances = blogData ? JSON.parse(blogData).map(Link.fromObject) : [];
-        const otherInstances = otherData ? JSON.parse(otherData).map(Link.fromObject) : [];
-        const cpInstances = cpData ? JSON.parse(cpData).map(Link.fromObject) : [];
+        const portfolioInstances = portfolioData
+            ? JSON.parse(portfolioData).map(Link.fromObject)
+            : [];
+        const socialInstances = socialData
+            ? JSON.parse(socialData).map(Link.fromObject)
+            : [];
+        const blogInstances = blogData
+            ? JSON.parse(blogData).map(Link.fromObject)
+            : [];
+        const otherInstances = otherData
+            ? JSON.parse(otherData).map(Link.fromObject)
+            : [];
+        const cpInstances = cpData
+            ? JSON.parse(cpData).map(Link.fromObject)
+            : [];
 
         setProtfolioList(portfolioInstances);
         setSocialList(socialInstances);
         setBlogList(blogInstances);
         setOtherList(otherInstances);
         setCodingProfileList(cpInstances);
-    }
+    };
 
     useEffect(() => {
-        
         updateListsFromLocalStorage();
-
     }, []);
 
     return (
@@ -60,6 +78,11 @@ const ListItem = () => {
             </div>
         </div>
     );
+};
+
+ListItem.propTypes = {
+    combinedState: PropTypes.object.isRequired,
+    setCombinedState: PropTypes.object.isRequired,
 };
 
 export default ListItem;
