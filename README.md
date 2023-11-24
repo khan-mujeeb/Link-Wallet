@@ -6,10 +6,7 @@ A simple Google Chrome extension that is used to store all the important links l
 https://github.com/khan-mujeeb/Link-Wallet/assets/89351750/500aacb4-745c-429c-b86e-f7c425b8fae0
 
 
-## How to Install
-
-For development:
-
+## 🛠️ How to Use/Install
 1. Download From [here](https://drive.google.com/file/d/1KnhJxTc4bMynpOVLpSbI2UBfgh4vax34/view?usp=sharing)
 2. Extract the zip file
 3. Open up Chrome and go to the extensions page (Window → Extensions)
