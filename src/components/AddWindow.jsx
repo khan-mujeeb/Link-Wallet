@@ -16,6 +16,12 @@ const AddWindow = ({setCombinedState, setActive}) => {
     const [cat, setType] = React.useState("");
 
     const handleButtonClick = () => {
+
+        if (name === "" || url === "" || cat === "") {
+            alert("Please fill all the fields");
+            return;
+        }
+
         const link = { name, url, type: cat };
         const existingLinks = JSON.parse(localStorage.getItem(cat) || "[]");
         const updatedLinks = [...existingLinks, link];
