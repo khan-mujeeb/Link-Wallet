@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const AddButton = ({setActive}) => {
 
     function onClickHandler(){
-        console.log("clicked");
         setActive(true);
     }
 

@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
-const List = ({ list, title, setCombinedState  }) => {
-    const [copy, setCopy] = React.useState("copy");
+const List = ({ list, title, setCombinedState }) => {
+    const [copies, setCopies] = React.useState(new Array(list.length));
+    
+    useEffect(() => {
+        setCopies(new Array(list.length).fill("copy"));
+    }, [list]);
+
+    console.log(copies);
     const {
         setProtfolioList,
         setSocialList,
@@ -11,6 +17,47 @@ const List = ({ list, title, setCombinedState  }) => {
         setCodingProfileList,
     } = setCombinedState;
 
+    const handleCopyClick = (index, url) => {
+        navigator.clipboard.writeText(url);
+        const newCopies = [...copies];
+        newCopies[index] = "copied";
+        setCopies(newCopies);
+
+        setTimeout(() => {
+            newCopies[index] = "copy";
+            setCopies(newCopies);
+            console.log(newCopies[index])   ;
+        }, 800);
+    };
+
+    const handleDeleteClick = (user) => {
+        const { type, name } = user;
+
+        const data = JSON.parse(localStorage.getItem(type)) || [];
+        const updatedData = data.filter((item) => item.name !== name);
+
+        localStorage.setItem(type, JSON.stringify(updatedData));
+
+        switch (type) {
+            case "social":
+                setSocialList(updatedData);
+                break;
+            case "portfolio":
+                setProtfolioList(updatedData);
+                break;
+            case "blog":
+                setBlogList(updatedData);
+                break;
+            case "other":
+                setOtherList(updatedData);
+                break;
+            case "coding_profile":
+                setCodingProfileList(updatedData);
+                break;
+            default:
+                break;
+        }
+    };
 
     return (
         <div className="flex flex-col w-full p-3">
@@ -19,52 +66,18 @@ const List = ({ list, title, setCombinedState  }) => {
             {list.map((user, index) => (
                 <div className="flex flex-col gap-1" key={index}>
                     <div className="flex justify-between items-center mt-1">
-                        <h2 className=" font-semibold text-[16px]">{user.name}</h2>
+                        <h2 className="font-semibold text-[16px]">{user.name}</h2>
 
                         <div className="flex gap-1">
                             <button
                                 className="bg-green-500 text-[16px] p-2 font-semibold text-slate-900 rounded-md"
-                                onClick={() => {
-                                    navigator.clipboard.writeText(user.url);
-                                    setCopy("copied");
-                                }}
+                                onClick={() => handleCopyClick(index, user.url)}
                             >
-                                {copy}
+                                {copies[index]}
                             </button>
                             <button
-                                className="bg-red-500 p-1 rounded-md [16px] font-semibold text-slate-900"
-                                onClick={() => {
-                                    const socialData =
-                                        JSON.parse(
-                                            localStorage.getItem(user.type)
-                                        ) || [];
-
-                                    // Filter out the item to remove
-                                    const updatedData = socialData.filter(
-                                        (item) => item.name !== user.name
-                                    );
-
-                                    // Update the local storage with the modified data
-                                    localStorage.setItem(
-                                        user.type,
-                                        JSON.stringify(updatedData)
-                                    );
-
-                                    if(user.type === "social"){
-                                        setSocialList(updatedData);
-                                    }else if(user.type === "portfolio"){
-                                        setProtfolioList(updatedData);
-                                    }
-                                    else if(user.type === "blog"){
-                                        setBlogList(updatedData);
-                                    }
-                                    else if(user.type === "other"){
-                                        setOtherList(updatedData);
-                                    }
-                                    else if(user.type === "coding_profile"){
-                                        setCodingProfileList(updatedData);
-                                    }
-                                }}
+                                className="bg-red-500 p-1 rounded-md text-[16px] font-semibold text-slate-900"
+                                onClick={() => handleDeleteClick(user)}
                             >
                                 delete
                             </button>
