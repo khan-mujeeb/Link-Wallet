@@ -17,10 +17,6 @@ const AddWindow = ({setCombinedState, setActive}) => {
 
     const handleButtonClick = () => {
 
-        if (name === "" || url === "" || cat === "") {
-            alert("Please fill all the fields");
-            return;
-        }
 
         const link = { name, url, type: cat };
         const existingLinks = JSON.parse(localStorage.getItem(cat) || "[]");
@@ -50,7 +46,8 @@ const AddWindow = ({setCombinedState, setActive}) => {
     };
 
     return (
-        <div className="flex rounded-lg bg-slate-500 p-2">
+        <div className="h-full bg-slate-700 flex flex-col justify-center z-50">
+        <div className="flex rounded-lg bg-slate-500 p-2 ">
             <form action="" className="flex  flex-col gap-1 w-full">
 
 
@@ -98,8 +95,17 @@ const AddWindow = ({setCombinedState, setActive}) => {
                 >
                     Create
                 </button>
+                <button
+                    type="button"
+                    className="bg-red-400 rounded-md p-1 w-full"
+                    onClick={() => setActive(false)}
+                >
+                    Cancel
+                </button>
                 
             </form>
+        </div>
+
         </div>
     );
 };

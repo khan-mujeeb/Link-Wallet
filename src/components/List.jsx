@@ -60,7 +60,7 @@ const List = ({ list, title, setCombinedState }) => {
     };
 
     return (
-        <div className="flex flex-col w-full p-3">
+        <div className="flex flex-col w-full p-3 overflow-y-auto h-48">
             <h1 className="p-1 pl-2 bg-orange-200 font-semibold text-lg">{title}</h1>
 
             {list.map((user, index) => (

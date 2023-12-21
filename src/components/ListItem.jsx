@@ -58,7 +58,7 @@ const ListItem = ({ combinedState, setCombinedState }) => {
         <div className="flex gap-2 items-center w-[400px
         ] bg-blue-50 rounded-lg" >
             <div className="flex flex-col w-full p-3">
-                <div className="flex">
+                <div className="flex overflow-y-auto">
                     
                     {/* social */}
                     <List list={socialList} setCombinedState={setCombinedState} title="Social" />
@@ -73,7 +73,7 @@ const ListItem = ({ combinedState, setCombinedState }) => {
                     {/* social */}
                     <List list={protfolioList} setCombinedState={setCombinedState} title="Protfolio" />
                 </div>
-                <div className="flex">
+                <div className="flex overflow-y-auto">
                     {/* social */}
                     <List list={otherList} setCombinedState={setCombinedState} title="Other" />
                 </div>
