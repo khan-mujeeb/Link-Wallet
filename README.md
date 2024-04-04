@@ -2,7 +2,9 @@
 
 ![Visitor Count](https://profile-counter.glitch.me/khan-mujeeb/count.svg)
 
-<img src = "https://github.com/khan-mujeeb/Link-Wallet/assets/89351750/4295c66a-eda8-4e68-bef0-d91891f40a66" width="100" height =""/> A simple Google Chrome extension that is used to store all the important links like coding profles, github, linkedin, blog, personal portfolio etc. So that you can access it whenever your applying for your dream job.
+<img src = "https://github.com/khan-mujeeb/Link-Wallet/assets/89351750/4295c66a-eda8-4e68-bef0-d91891f40a66" width="100" height =""/> You don't always need a high-tech stack to solve real-world problems. Even simple solutions can tackle complex challenges effectively.
+
+I built a Google Chrome extension that's like having your own little assistant for job hunting! It lets you save all your important links—like your coding profiles, GitHub, LinkedIn, blog, and personal portfolio—in one spot. So, when it's time to apply for that dream job, you're all set with just a click!
 
 
 ## 🎥 Demo
