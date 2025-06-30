@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
 
-const CopyButton = () => {
+const CopyButton = ({ onClick, className }) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (copied) setCopied(false);
     }, 1000);
-
     return () => clearTimeout(timeout);
   }, [copied]);
 
+  const handleClick = () => {
+    setCopied(true);
+    if (onClick) onClick();
+  };
+
   return (
-    <div className=" flex justify-center items-center">
-      <button
-        onClick={() => setCopied(true)}
-        className="appearance-none p-2 border-0 outline-none cursor-pointer bg-transparent"
-      >
+    <div className={`relative group ${className}`}>
+      <button onClick={handleClick} className="p-0">
         <div className="relative w-4 h-4">
           <Clippy
             className={`absolute top-0 left-0 text-gray-800 transition-all duration-300 ${
@@ -30,6 +31,10 @@ const CopyButton = () => {
           />
         </div>
       </button>
+
+      <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+        {copied ? "Copied!" : "Copy"}
+      </span>
     </div>
   );
 };

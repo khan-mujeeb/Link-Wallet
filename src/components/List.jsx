@@ -1,15 +1,10 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import CopyButton from "./CopyButton";
+import DeleteButton from "./DeleteButton";
 
-const List = ({ list, title, setCombinedState }) => {
-
-
-    const [copies, setCopies] = React.useState(new Array(list.length));
+const List = ({ list, title, setCombinedState }) => {    
     
-    useEffect(() => {
-        setCopies(new Array(list.length).fill("copy"));
-    }, [list]);
 
     // destructuring the object    
     const {
@@ -22,17 +17,9 @@ const List = ({ list, title, setCombinedState }) => {
 
     // copy link to clipboard
     const handleCopyClick = (index, url) => {
+        console.log(`Copying URL: ${url} at index: ${index}`);
         navigator.clipboard.writeText(url);
-        const newCopies = [...copies];
-        newCopies[index] = "copied";
-        setCopies(newCopies);
-
-        // reset the copy button text after 800ms
-        setTimeout(() => {
-            newCopies[index] = "copy";
-            setCopies(newCopies);
-            console.log(newCopies[index])   ;
-        }, 800);
+        
     };
 
 
@@ -45,7 +32,9 @@ const List = ({ list, title, setCombinedState }) => {
 
         localStorage.setItem(type, JSON.stringify(updatedData));
 
-        switch (type) {
+        // wait for animation to complete before updating the state
+        setTimeout(() => {
+            switch (type) {
             case "social":
                 setSocialList(updatedData);
                 break;
@@ -64,6 +53,9 @@ const List = ({ list, title, setCombinedState }) => {
             default:
                 break;
         }
+        }, 400);
+
+        
     };
 
     return (
@@ -77,17 +69,15 @@ const List = ({ list, title, setCombinedState }) => {
 
                         <div className="flex gap-1">
                             <CopyButton
-                                className="bg-green-500 text-[16px] p-2 font-semibold text-slate-900 rounded-md"
+                                className="text-[16px] p-2 font-semibold text-slate-900 rounded-md"
                                 onClick={() => handleCopyClick(index, user.url)}
-                            >
-                                {copies[index]}
-                            </CopyButton>
-                            <button
-                                className="bg-red-500 p-1 rounded-md text-[16px] font-semibold text-slate-900"
+                            />
+                            <DeleteButton
+                                className=" p-1 rounded-md text-[16px] font-semibold text-slate-900"
                                 onClick={() => handleDeleteClick(user)}
                             >
                                 delete
-                            </button>
+                            </DeleteButton>
                         </div>
                     </div>
                 </div>
