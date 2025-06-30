@@ -1,3 +1,4 @@
+// data class to create link object
 class Links {
     constructor(name, url, type) {
         this.name = name;

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 const AddWindow = ({setCombinedState, setActive}) => {
 
+    // destructuring the object
     const {
         setProtfolioList,
         setSocialList,
@@ -11,15 +12,25 @@ const AddWindow = ({setCombinedState, setActive}) => {
         setOtherList,
         setCodingProfileList,
     } = setCombinedState;
+
+    // states
     const [name, setName] = React.useState("");
     const [url, setUrl] = React.useState("");
     const [cat, setType] = React.useState("");
 
+
+
+    // function to handle the save button click
     const handleButtonClick = () => {
 
 
+        // new link obj creation
         const link = { name, url, type: cat };
+
+        // fetching the existing links from local storage
         const existingLinks = JSON.parse(localStorage.getItem(cat) || "[]");
+
+        // concat new and old links
         const updatedLinks = [...existingLinks, link];
 
         localStorage.setItem(cat, JSON.stringify(updatedLinks));

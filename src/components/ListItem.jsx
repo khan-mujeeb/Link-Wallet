@@ -63,18 +63,19 @@ const ListItem = ({ combinedState, setCombinedState }) => {
                     {/* social */}
                     <List list={socialList} setCombinedState={setCombinedState} title="Social" />
 
-                    {/* social */}
+                    {/* coding profile */}
                     <List list={codingProfileList} setCombinedState={setCombinedState} title="Coding Profile" />
                 </div>
                 <div className="flex">
-                    {/* social */}
+                    {/* blog */}
                     <List list={blogList} setCombinedState={setCombinedState} title="Blog" />
 
-                    {/* social */}
-                    <List list={protfolioList} setCombinedState={setCombinedState} title="Protfolio" />
+                    {/* portfolio */}
+                    <List list={protfolioList} setCombinedState={setCombinedState} title="Portfolio" />
                 </div>
+
                 <div className="flex overflow-y-auto">
-                    {/* social */}
+                    {/* other */}
                     <List list={otherList} setCombinedState={setCombinedState} title="Other" />
                 </div>
             </div>

@@ -1,14 +1,17 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
+import CopyButton from "./CopyButton";
 
 const List = ({ list, title, setCombinedState }) => {
+
+
     const [copies, setCopies] = React.useState(new Array(list.length));
     
     useEffect(() => {
         setCopies(new Array(list.length).fill("copy"));
     }, [list]);
 
-    console.log(copies);
+    // destructuring the object    
     const {
         setProtfolioList,
         setSocialList,
@@ -17,12 +20,14 @@ const List = ({ list, title, setCombinedState }) => {
         setCodingProfileList,
     } = setCombinedState;
 
+    // copy link to clipboard
     const handleCopyClick = (index, url) => {
         navigator.clipboard.writeText(url);
         const newCopies = [...copies];
         newCopies[index] = "copied";
         setCopies(newCopies);
 
+        // reset the copy button text after 800ms
         setTimeout(() => {
             newCopies[index] = "copy";
             setCopies(newCopies);
@@ -30,6 +35,8 @@ const List = ({ list, title, setCombinedState }) => {
         }, 800);
     };
 
+
+    // function to handle the delete button click
     const handleDeleteClick = (user) => {
         const { type, name } = user;
 
@@ -69,12 +76,12 @@ const List = ({ list, title, setCombinedState }) => {
                         <h2 className="font-semibold text-[16px]">{user.name}</h2>
 
                         <div className="flex gap-1">
-                            <button
+                            <CopyButton
                                 className="bg-green-500 text-[16px] p-2 font-semibold text-slate-900 rounded-md"
                                 onClick={() => handleCopyClick(index, user.url)}
                             >
                                 {copies[index]}
-                            </button>
+                            </CopyButton>
                             <button
                                 className="bg-red-500 p-1 rounded-md text-[16px] font-semibold text-slate-900"
                                 onClick={() => handleDeleteClick(user)}
