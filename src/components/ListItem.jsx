@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 import Link from "../data/Links.js";
 import List from "../components/List.jsx";
+
+import profile from "../assets/img/profile.svg";
+import coding from "../assets/img/coding.svg";
+import blog from "../assets/img/blog.svg";
+import portfolio from "../assets/img/portfolio.svg";
+import other from "../assets/img/tag.svg";
+
 import PropTypes from "prop-types";
 
 const ListItem = ({ combinedState, setCombinedState }) => {
@@ -55,30 +62,55 @@ const ListItem = ({ combinedState, setCombinedState }) => {
     }, []);
 
     return (
-        <div className="flex gap-2 items-center w-[400px
-        ] bg-blue-50 rounded-lg" >
-            <div className="flex flex-col w-full p-3">
-                <div className="flex overflow-y-auto">
-                    
-                    {/* social */}
-                    <List list={socialList} setCombinedState={setCombinedState} title="Social" />
+        <div className=" grid grid-cols-3 gap-1 w-full overflow-hidden max-h-[600px] rounded-lg">
+            {/* Social */}
 
-                    {/* coding profile */}
-                    <List list={codingProfileList} setCombinedState={setCombinedState} title="Coding Profile" />
-                </div>
-                <div className="flex">
-                    {/* blog */}
-                    <List list={blogList} setCombinedState={setCombinedState} title="Blog" />
+            <List
+                list={socialList}
+                setCombinedState={setCombinedState}
+                title="Social"
+                icon={profile}
+            />
 
-                    {/* portfolio */}
-                    <List list={protfolioList} setCombinedState={setCombinedState} title="Portfolio" />
-                </div>
+            {/* Coding Profile */}
 
-                <div className="flex overflow-y-auto">
-                    {/* other */}
-                    <List list={otherList} setCombinedState={setCombinedState} title="Other" />
-                </div>
+            <List
+                list={codingProfileList}
+                setCombinedState={setCombinedState}
+                title="Coding Profile"
+                icon={coding}
+            />
+
+            {/* Blog */}
+            <div className="h-full overflow-y-auto ">
+                <List
+                list={blogList}
+                setCombinedState={setCombinedState}
+                title="Blog"
+                icon={blog}
+            />
             </div>
+
+            {/* Portfolio */}
+
+            <List
+                list={protfolioList}
+                setCombinedState={setCombinedState}
+                title="Portfolio"
+                icon={portfolio}
+            />
+
+            {/* Other - spanning both columns if needed */}
+            <div className="col-span-1 md:col-span-2 h-full overflow-y-auto">
+                
+            <List
+                list={otherList}
+                setCombinedState={setCombinedState}
+                title="Other"
+                icon={other}
+            />
+            </div>
+
         </div>
     );
 };

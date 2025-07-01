@@ -12,9 +12,9 @@ const AddButton = ({ setActive }) => {
         <div>
             <div
                 onClick={onClickHandler}
-                className="flex justify-center items-center bg-slate-700 w-full p-1 rounded-md"
+                className="p-2 text-gray-200 font-semibold flex justify-center items-center bg-green-800 text-sm rounded-lg hover:bg-green-700 cursor-pointer transition-all duration-300 ease-in-out"
             >
-                <img className="w-8 h-8" src={plus} />
+                Add Link
             </div>
         </div>
     );

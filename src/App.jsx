@@ -1,14 +1,17 @@
-
 import React from "react";
 
-// import components 
+// import components
 import ListItem from "./components/ListItem";
 import AddButton from "./components/AddButton";
 import AddWindow from "./components/AddWindow";
+import SearchInput from "./components/SearchInput";
+import light from "./assets/img/sun.png";
+import dark from "./assets/img/moon.png";
+import logo from "./assets/img/logo.png";
+import logoDark from "./assets/img/logo-dark.png";
 
 // App components
 function App() {
-
     // states
     const [addWindowBtn, setAddWindowBtn] = React.useState(false);
     const [protfolioList, setProtfolioList] = React.useState([]);
@@ -16,6 +19,7 @@ function App() {
     const [otherList, setOtherList] = React.useState([]);
     const [socialList, setSocialList] = React.useState([]);
     const [codingProfileList, setCodingProfileList] = React.useState([]);
+    const [lightTheme, setLightTheme] = React.useState(true);
 
     // creating single object from all the states
     const commbinedState = {
@@ -35,31 +39,76 @@ function App() {
         setCodingProfileList,
     };
 
-
-
     return (
-        <div className="flex w-[500px] gap-2 flex-col  p-1 h-[710px] justify-start">
-            <h1 className="font-bold align-top text-xl text-center rounded-lg p-2 bg-slate-700 text-slate-50">
-                Links Wallet
-            </h1>
+        <div className="relative flex items-center w-[800px] h-[600px] bg-gray-50 dark:bg-gray-700  gap-2 flex-col px-1 py-2 rounded-lg select-none ">
+            
+            {/* navbar  */}
+            <nav className="w-full px-2  flex h-16  flex-row  items-center justify-between shadow-sm bg-white dark:bg-gray-800 ">
+                {/* logo  */}
+                {lightTheme ? (
+                    <img src={logo} className="  h-20 rounded-lg" alt="logo" />
+                ) : (
+                    <img
+                        src={logoDark}
+                        className="  h-20 rounded-lg"
+                        alt="logo"
+                    />
+                )}
 
-            {!addWindowBtn ? (
+                {/* add link, search links and theme toggle */}
+                <div className="flex gap-x-6 items-center  h-full px-2 gap-2">
+                    <AddButton setActive={setAddWindowBtn} />
 
-                // links list 
-                <ListItem
-                    combinedState={commbinedState}
-                    setCombinedState={setCombinedState}
-                />
-            ) : 
-            // add new link window
-            (
-                <AddWindow
-                    setCombinedState={setCombinedState}
-                    setActive={setAddWindowBtn}
-                />
+                    {/* search bar  */}
+                    <SearchInput />
+
+                    {/* dark/light mode toggle */}
+
+                    <button
+                        className="w-5 h-5 flex justify-center items-center rounded-lg  transition-all duration-300 ease-in-out"
+                        onClick={() => {
+                            setLightTheme(!lightTheme);
+                            if (lightTheme) {
+                                document.documentElement.classList.add("dark");
+                            } else {
+                                document.documentElement.classList.remove(
+                                    "dark"
+                                );
+                            }
+                        }}
+                    >
+                        {lightTheme ? (
+                            <img
+                                src={dark}
+                                alt="dark mode"
+                                className="w-5 h-5"
+                            />
+                        ) : (
+                            <img
+                                src={light}
+                                alt="light mode"
+                                className="w-5 h-5"
+                            />
+                        )}
+                    </button>
+                </div>
+            </nav>
+
+            {/* main content  */}
+            <ListItem
+                combinedState={commbinedState}
+                setCombinedState={setCombinedState}
+            />
+
+            {/* pop up window for adding new links */}
+            {addWindowBtn && (
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-40 rounded-lg shadow-2xl">
+                    <AddWindow
+                        setCombinedState={setCombinedState}
+                        setActive={setAddWindowBtn}
+                    />
+                </div>
             )}
-
-            {!addWindowBtn ? <AddButton setActive={setAddWindowBtn} /> : null}
         </div>
     );
 }

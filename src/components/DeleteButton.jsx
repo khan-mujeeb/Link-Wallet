@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const DeleteButton = ({ onClick, className }) => {
+const DeleteButton = ({ onClick }) => {
   const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
@@ -16,11 +16,11 @@ const DeleteButton = ({ onClick, className }) => {
   };
 
   return (
-    <div className={`relative group ${className}`}>
+    <div className="relative p-1 group">
       <button onClick={handleClick} className="p-2">
-        <div className="relative w-4 h-4">
+        <div className="relative flex justify-center items-center w-2 h-4">
           <TrashIcon
-            className={`absolute top-0 left-0  transition-all duration-300 ${
+            className={` dark:text-gray-300 absolute top-0 left-0  transition-all duration-300 ${
               deleted ? "-translate-x-full opacity-0" : "translate-x-0 opacity-100"
             }`}
           />
@@ -32,7 +32,7 @@ const DeleteButton = ({ onClick, className }) => {
         </div>
       </button>
 
-      <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+      <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
         {deleted ? "Deleted!" : "Delete"}
       </span>
     </div>
@@ -44,7 +44,7 @@ function TrashIcon({ className }) {
     <svg
       className={className}
       width="16"
-      height="16"
+      height="18"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

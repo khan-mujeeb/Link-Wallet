@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const CopyButton = ({ onClick, className }) => {
+const CopyButton = ({ onClick }) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -16,11 +16,11 @@ const CopyButton = ({ onClick, className }) => {
   };
 
   return (
-    <div className={`relative group ${className}`}>
+    <div className="relative p-1 group mt-1" >
       <button onClick={handleClick} className="p-0">
-        <div className="relative w-4 h-4">
+        <div className="relative w-2 h-4 ">
           <Clippy
-            className={`absolute top-0 left-0 text-gray-800 transition-all duration-300 ${
+            className={` dark:text-gray-300 absolute top-0 left-0 text-gray-800 transition-all duration-300 ${
               copied ? "-translate-x-full opacity-0" : "translate-x-0 opacity-100"
             }`}
           />
@@ -32,7 +32,7 @@ const CopyButton = ({ onClick, className }) => {
         </div>
       </button>
 
-      <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
         {copied ? "Copied!" : "Copy"}
       </span>
     </div>

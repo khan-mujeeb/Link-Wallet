@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
-const AddWindow = ({setCombinedState, setActive}) => {
-
+const AddWindow = ({ setCombinedState, setActive }) => {
     // destructuring the object
     const {
         setProtfolioList,
@@ -18,12 +16,8 @@ const AddWindow = ({setCombinedState, setActive}) => {
     const [url, setUrl] = React.useState("");
     const [cat, setType] = React.useState("");
 
-
-
     // function to handle the save button click
     const handleButtonClick = () => {
-
-
         // new link obj creation
         const link = { name, url, type: cat };
 
@@ -35,7 +29,7 @@ const AddWindow = ({setCombinedState, setActive}) => {
 
         localStorage.setItem(cat, JSON.stringify(updatedLinks));
 
-        // updating the state 
+        // updating the state
         if (cat === "social") {
             setSocialList(updatedLinks);
         } else if (cat === "portfolio") {
@@ -53,79 +47,74 @@ const AddWindow = ({setCombinedState, setActive}) => {
         setUrl("");
         setType("");
 
-        setActive(false)
+        setActive(false);
     };
 
     return (
-        <div className="h-full bg-slate-700 flex flex-col justify-center z-50">
-        <div className="flex rounded-lg bg-slate-500 p-2 ">
-            <form action="" className="flex  flex-col gap-1 w-full">
+        <div className="absolute flex flex-col w-72 justify-center z-50">
+            <div className="flex rounded-xl bg-slate-50 dark:bg-gray-800 p-5 ">
+                <form action="" className="flex  flex-col gap-1 w-full">
+
+                    {/* type select  */}
+                    <select
+                        className="rounded-md p-2 flex-auto dark:bg-gray-700 dark:text-gray-300"
+                        name="type"
+                        value={cat}
+                        onChange={(e) => setType(e.target.value)}
+                    >
+                        <option value="">Select a type</option>
+                        <option value="social">social</option>
+                        <option value="coding_profile">coding profile</option>
+                        <option value="blog">Blog</option>
+                        <option value="portfolio">Portfolio</option>
+                        <option value="other">Other</option>
+                    </select>
 
 
-                <div className="flex flex-row gap-2 w-full">
-                <input className="rounded-md p-1 flex-auto"
-                    type="text"
-                    placeholder="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
+                    {/* name input  */}
+                    <input
+                        className="rounded-md p-1 flex-auto dark:bg-gray-700 dark:text-gray-300"
+                        type="text"
+                        placeholder="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
 
-                <select className="rounded-md p-2 flex-auto"
-                    name="type"
-                    value={cat}
-                    onChange={(e) => setType(e.target.value)}
-                >
-                    <option value="">Select a type</option>
-                    <option value="social">social</option>
-                    <option value="coding_profile">coding profile</option>
-                    <option value="blog">Blog</option>
-                    <option value="portfolio">Portfolio</option>
-                    <option value="other">Other</option>
-                </select>
-                </div>
+                    {/* url input  */}
+                    
+                        <input
+                            type="text"
+                            placeholder="url"
+                            className=" w-86 rounded-md p-2 flex-auto dark:bg-gray-700 dark:text-gray-300"
+                            value={url}
+                            onChange={(e) => setUrl(e.target.value)}
+                        />
+                    
+                    
 
-                
-
-                <div className="flex gap-2">
-                <input
-                    type="text"
-                    placeholder="url"
-                    className=" w-86 rounded-md p-2 flex-auto"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                />
-
-                
-                
-                </div>
-
-                <button
-                    type="button"
-                    className="bg-green-400 rounded-md p-1 w-full"
-                    onClick={handleButtonClick}
-                >
-                    Create
-                </button>
-                <button
-                    type="button"
-                    className="bg-red-400 rounded-md p-1 w-full"
-                    onClick={() => setActive(false)}
-                >
-                    Cancel
-                </button>
-                
-            </form>
-        </div>
-
+                    <button
+                        type="button"
+                        className="bg-green-400 rounded-md mt-3 p-1 w-full"
+                        onClick={handleButtonClick}
+                    >
+                        Create
+                    </button>
+                    <button
+                        type="button"
+                        className="bg-red-400 rounded-md p-1 w-full"
+                        onClick={() => setActive(false)}
+                    >
+                        Cancel
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
 
-
-
 AddWindow.propTypes = {
     setActive: PropTypes.func.isRequired,
     setCombinedState: PropTypes.object.isRequired,
-}
+};
 
 export default AddWindow;
