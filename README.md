@@ -1,10 +1,15 @@
-# Link Wallet 🔗💼 
+<div align="center">
+  <img  src = "https://github.com/user-attachments/assets/f2bc7401-8136-41f4-8b63-4f42c3249566" width="150" height =""/> 
 
-![Visitor Count](https://profile-counter.glitch.me/khan-mujeeb/count.svg)
+   ![Visitor Count](https://profile-counter.glitch.me/khan-mujeeb/count.svg)
+  
+<p>Link Wallet is a lightweight Google Chrome extension that helps you organize and access all your important professional links—like your coding profiles, GitHub, LinkedIn, blog, and portfolio—in one convenient place. No more scrambling during job applications—just click and go!</p>
 
-<img src = "https://github.com/khan-mujeeb/Link-Wallet/assets/89351750/4295c66a-eda8-4e68-bef0-d91891f40a66" width="100" height =""/> You don't always need a high-tech stack to solve real-world problems. Even simple solutions can tackle complex challenges effectively.
+[<img src="https://github.com/user-attachments/assets/28584966-0d09-4072-bf9c-9c418222c53f" />](#) [<img src="https://github.com/user-attachments/assets/3121fe3a-5035-42cb-a738-ab4706ebf2ec" />](#) [<img src="https://github.com/user-attachments/assets/e9a30b3f-241b-4d0c-a1ad-47a9200fefbd" />](https://microsoftedge.microsoft.com/addons/detail/link-wallet/mgcnlecebdnjljkkalpelnhipjnkjfij?hl=en-US)
 
-I built a Google Chrome extension that's like having your own little assistant for job hunting! It lets you save all your important links—like your coding profiles, GitHub, LinkedIn, blog, and personal portfolio—in one spot. So, when it's time to apply for that dream job, you're all set with just a click!
+</div>
+
+
 
 
 ## 🎥 Demo
@@ -12,27 +17,35 @@ https://github.com/khan-mujeeb/Link-Wallet/assets/89351750/500aacb4-745c-429c-b8
 
 
 ## 🛠️ How to Use/Install
+[microsoft edge](https://microsoftedge.microsoft.com/addons/detail/link-wallet/mgcnlecebdnjljkkalpelnhipjnkjfij)
+[chrome/firefox/etc](./steps.md)
 
-### microsoft edge users [get here](https://microsoftedge.microsoft.com/addons/detail/link-wallet/mgcnlecebdnjljkkalpelnhipjnkjfij)
 
-### or
-</br>
-
-1. Download From [here](https://drive.google.com/file/d/1KnhJxTc4bMynpOVLpSbI2UBfgh4vax34/view?usp=sharing)
-2. Extract the zip file
-3. Open up Chrome and go to the extensions page (Window → Extensions)
-4. Enable developer mode (if it’s not already)
-5. Click on “Load unpacked extension…”
-6. Open dist folder you have recently downloaded
-7. Click on **Select folder** button
 
 ## ⚙️ Features
-- quick access to your important link whenever you want
-- add new links
-- delete old links
-- saved on local storage 
+- 📂 Categorized link management (Social, Portfolio, Blog, Coding Profiles, Others)
+- ➕ Add new links quickly through a simple form
+- 🔍 Instant search with autocomplete and icons
+- 🗑️ Delete links you no longer need
+- 📋 One-click copy for fast pasting into applications
+- 🌗 Light/Dark mode toggle
+- 💾 Uses localStorage for persistence (no backend needed)
 
-## Extra notes:
 
-*   Please report any bugs that you find as issues on the project
-*   More details on []()
+## 🧰 Tech Stack
+
+| Tech                      | Usage                               |
+| ------------------------- | ----------------------------------- |
+| **React.js**              | UI building and component logic     |
+| **Tailwind CSS**          | Styling with utility-first approach |
+| **Vite**                  | Fast build tool and bundler         |
+| **localStorage**          | Client-side data storage            |
+| **JavaScript (ES6+)**     | Application logic                   |
+| **HTML/CSS**              | Basic markup and structure          |
+| **Chrome Extension APIs** | Integration with browser UI         |
+
+
+
+## 📌 Extra Notes
+- Found a bug or have a feature request? Create an issue
+- Contributions are welcome—feel free to fork and make a pull request
