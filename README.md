@@ -17,8 +17,9 @@ https://github.com/khan-mujeeb/Link-Wallet/assets/89351750/500aacb4-745c-429c-b8
 
 
 ## 🛠️ How to Use/Install
-[microsoft edge](https://microsoftedge.microsoft.com/addons/detail/link-wallet/mgcnlecebdnjljkkalpelnhipjnkjfij)
-[chrome/firefox/etc](./steps.md)
+- [microsoft edge](https://microsoftedge.microsoft.com/addons/detail/link-wallet/mgcnlecebdnjljkkalpelnhipjnkjfij)
+
+- [chrome/firefox/etc](./steps.md)
 
 
 
