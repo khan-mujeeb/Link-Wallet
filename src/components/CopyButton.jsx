@@ -32,7 +32,7 @@ const CopyButton = ({ onClick }) => {
         </div>
       </button>
 
-      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+      <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50">
         {copied ? "Copied!" : "Copy"}
       </span>
     </div>

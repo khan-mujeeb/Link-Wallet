@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // import components
 import ListItem from "./components/ListItem";
@@ -21,6 +21,18 @@ function App() {
     const [codingProfileList, setCodingProfileList] = React.useState([]);
     const [lightTheme, setLightTheme] = React.useState(true);
 
+    // setting initial theme(dark/light) from local storage
+    useEffect(() => {
+        var theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+            setLightTheme(false);
+        } else {
+            document.documentElement.classList.remove("dark");
+            setLightTheme(true);
+        }
+    },[]);
+
     // creating single object from all the states
     const commbinedState = {
         socialList,
@@ -41,7 +53,6 @@ function App() {
 
     return (
         <div className="relative flex items-center w-[800px] h-[600px] bg-gray-50 dark:bg-gray-700  gap-2 flex-col px-1 py-2 rounded-lg select-none ">
-            
             {/* navbar  */}
             <nav className="w-full px-2  flex h-16  flex-row  items-center justify-between shadow-sm bg-white dark:bg-gray-800 ">
                 {/* logo  */}
@@ -60,20 +71,23 @@ function App() {
                     <AddButton setActive={setAddWindowBtn} />
 
                     {/* search bar  */}
-                    <SearchInput />
+                    <SearchInput  combinedState={commbinedState} setCombinedState={setCombinedState}/>
 
                     {/* dark/light mode toggle */}
 
                     <button
-                        className="w-5 h-5 flex justify-center items-center rounded-lg  transition-all duration-300 ease-in-out"
+                        className="w-10 h-5 flex justify-center items-center rounded-lg  transition-all duration-300 ease-in-out"
                         onClick={() => {
                             setLightTheme(!lightTheme);
+
                             if (lightTheme) {
                                 document.documentElement.classList.add("dark");
+                                localStorage.setItem("theme", "dark");
                             } else {
                                 document.documentElement.classList.remove(
                                     "dark"
                                 );
+                                localStorage.setItem("theme", "light");
                             }
                         }}
                     >

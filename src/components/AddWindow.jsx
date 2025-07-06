@@ -18,6 +18,11 @@ const AddWindow = ({ setCombinedState, setActive }) => {
 
     // function to handle the save button click
     const handleButtonClick = () => {
+
+        // validation for empty fields
+        if (!name || !url || !cat) return alert("All fields are required");
+
+
         // new link obj creation
         const link = { name, url, type: cat };
 
@@ -51,7 +56,7 @@ const AddWindow = ({ setCombinedState, setActive }) => {
     };
 
     return (
-        <div className="absolute flex flex-col w-72 justify-center z-50">
+        <div className="absolute flex flex-col w-[500px] justify-center z-50 ">
             <div className="flex rounded-xl bg-slate-50 dark:bg-gray-800 p-5 ">
                 <form action="" className="flex  flex-col gap-1 w-full">
 
@@ -94,14 +99,14 @@ const AddWindow = ({ setCombinedState, setActive }) => {
 
                     <button
                         type="button"
-                        className="bg-green-400 rounded-md mt-3 p-1 w-full"
+                        className="bg-green-800 hover:bg-green-700 rounded-md mt-3 p-1 w-full text-gray-200 font-semibold"
                         onClick={handleButtonClick}
                     >
                         Create
                     </button>
                     <button
                         type="button"
-                        className="bg-red-400 rounded-md p-1 w-full"
+                        className="bg-red-800 hover:bg-red-700 rounded-md p-1 w-full text-gray-200 font-semibold"
                         onClick={() => setActive(false)}
                     >
                         Cancel
